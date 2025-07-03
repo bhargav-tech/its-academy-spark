@@ -67,6 +67,9 @@ const Index = () => {
     }
   ];
 
+  // Featured courses for the boxes near video
+  const featuredCourses = courseModules.slice(0, 4);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* Header */}
@@ -123,6 +126,51 @@ const Index = () => {
             </div>
           </div>
 
+          {/* Featured Course Boxes */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold mb-8 text-gray-800">Featured Course Modules</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {featuredCourses.map((course) => (
+                <Link key={course.id} to="/courses" className="block">
+                  <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 bg-white/80 backdrop-blur-sm cursor-pointer h-full">
+                    <CardHeader className="pb-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <Badge variant="secondary" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs">
+                          Module {course.id}
+                        </Badge>
+                        <Badge variant="outline" className="text-xs">{course.difficulty}</Badge>
+                      </div>
+                      <CardTitle className="text-base leading-tight">{course.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
+                        <div className="flex items-center">
+                          <Clock className="w-3 h-3 mr-1" />
+                          {course.duration}
+                        </div>
+                        <div className="flex items-center">
+                          <BookOpen className="w-3 h-3 mr-1" />
+                          {course.lessons} lessons
+                        </div>
+                      </div>
+                      <Button size="sm" className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-xs">
+                        Explore Module
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+            <div className="text-center mt-8">
+              <Link to="/courses">
+                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                  View All Courses
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <div className="text-center">
@@ -164,7 +212,7 @@ const Index = () => {
       {/* Course Modules Preview */}
       <section className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
-          <h3 className="text-3xl font-bold mb-4">Course Modules</h3>
+          <h3 className="text-3xl font-bold mb-4">Complete Course Modules</h3>
           <p className="text-gray-600 text-lg">Comprehensive curriculum designed by industry experts</p>
         </div>
         
