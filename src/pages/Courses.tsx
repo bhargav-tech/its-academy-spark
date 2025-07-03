@@ -302,13 +302,15 @@ const Courses = () => {
                     </div>
                     
                     <div className="flex gap-3">
-                      <Button className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                        <Play className="w-4 h-4 mr-2" />
-                        Start Module
-                      </Button>
+                      <Link to={`/course/${module.id}`} className="flex-1">
+                        <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                          <Play className="w-4 h-4 mr-2" />
+                          View Full Syllabus
+                        </Button>
+                      </Link>
                       <Button variant="outline" className="flex items-center gap-2">
                         <FileText className="w-4 h-4" />
-                        Syllabus
+                        Quick View
                       </Button>
                     </div>
                   </CardContent>
